@@ -1,0 +1,5 @@
+<div>
+  <span>{{ movie | moviePipe : false }}</span>
+  <span ratingDirective [ratingValue]="movie.stars"></span>
+  <button (click)="open()">look</button>
+</div>

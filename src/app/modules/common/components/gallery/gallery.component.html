@@ -1,0 +1,7 @@
+<div>
+  <ng-container *ngFor="let item of data; let i = index">
+    <ng-container
+      *ngTemplateOutlet="galleryTemplate; context: { $implicit: item, index: i }">
+    </ng-container>
+  </ng-container>
+</div>

@@ -1,0 +1,10 @@
+<div class="btn-group" role="group">
+  <button *ngFor="let btn of buttons"
+        (click)="clickHandler(btn.id)"
+        [name]="btn.name || btn.id"
+        [type]="btn.type"
+        [ngClass]="btn.classes"
+        [class.active]="selectedButton === btn.id">
+    {{ btn.label }}
+  </button>
+</div>

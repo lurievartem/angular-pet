@@ -1,0 +1,57 @@
+<h2>Movie deatil form</h2>
+<form [formGroup]="movieForm" (ngSubmit)="submit()" novalidate>
+  <div>
+    <label for="title">title</label>
+    <input type="text" id="title" formControlName="title">
+    <show-errors [control]="movieForm.get('title')"></show-errors>
+  </div>
+
+  <span
+    ratingDirective
+    [ratingValue]="movieForm.get('stars').value"
+    [allowEdit]="true"
+    (onChange)="setStarValue($event)">
+  </span>
+
+  <div>
+    <label for="posterUrl">Poster Url</label>
+    <input type="text" id="posterUrl" formControlName="posterUrl">
+    <show-errors [control]="movieForm.get('posterUrl')"></show-errors>
+  </div>
+
+  <div formArrayName="genres">
+    <h3>Genres</h3>
+    <div *ngFor="let genre of movieForm.get('genres').controls; let i=index">
+      <label for=`genre${i}`>Genre {{ i+1 }}</label>
+      <input type="text" id="genre${i}" [formControlName]="i">
+    </div>
+    <show-errors [control]="movieForm.get('genres')"></show-errors>
+  </div>
+
+  <div formArrayName="actors">
+    <h3>Actors</h3>
+    <div *ngFor="let actor of movieForm.get('actors').controls; let i=index">
+      <label for=`actor${i}`>Actor {{ i+1 }}</label>
+      <input type="text" id="actor${i}" [formControlName]="i">
+    </div>
+    <show-errors [control]="movieForm.get('actors')"></show-errors>
+  </div>
+
+  <div formArrayName="director">
+    <h3>Directors</h3>
+    <div *ngFor="let d of movieForm.get('director').controls; let i=index">
+      <label for=`director${i}`>Director {{ i+1 }}</label>
+      <input type="text" id="director${i}" [formControlName]="i">
+    </div>
+    <show-errors [control]="movieForm.get('director')"></show-errors>
+  </div>
+
+  <div>
+    <label for="description">Description</label>
+    <textarea id="description" formControlName="description"></textarea>
+    <show-errors [control]="movieForm.get('description')"></show-errors>
+  </div>
+
+  <button type="submit" [disabled]="movieForm.pristine || movieForm.invalid">Save</button>
+  <button type="button" (click)="cancel()">cancel</button>
+</form>
