@@ -1,3 +1,3 @@
-export { MoviesDetailContainer } from './movie-detail.container';
-export { MoviesPreviewContainer } from './movies-preview.container';
-export { MovieEditContainer } from './movie-edit.container';
+export * from './movie-detail.container';
+export * from './movies-preview.container';
+export * from './movie-edit.container';
