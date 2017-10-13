@@ -11,8 +11,8 @@ import { MoviesEffects } from './movies.effects';
 import { MoviesRoutingModule } from './movies.routes';
 import { MoviesService } from './movies.service';
 
-import { MoviesPreviewContainer, MoviesDetailContainer, MovieEditContainer } from './containers';
-import { MoviePreviewComponent, MovieEditComponent } from './components';
+import * as containers from './containers';
+import * as components from './components';
 
 import { MoviePipe } from './helpers/movies.pipe';
 
@@ -25,14 +25,7 @@ import { MoviePipe } from './helpers/movies.pipe';
     StoreModule.forFeature('movies', reducers),
     EffectsModule.forFeature([ MoviesEffects ])
   ],
-  declarations: [
-    MoviesPreviewContainer,
-    MoviesDetailContainer,
-    MovieEditContainer,
-    MoviePreviewComponent,
-    MovieEditComponent,
-    MoviePipe
-  ],
+  declarations: [ ...containers, ...components, MoviePipe ],
   providers: [ MoviesService ]
 })
 export class MoviesModule {}
